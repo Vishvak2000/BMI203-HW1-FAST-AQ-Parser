@@ -14,7 +14,7 @@ def transcribe(seq: str, reverse: bool = False) -> str:
     if set(seq).difference(set(ALLOWED_NUC)): #change into sets and just test !intersection
         raise ValueError("Invalid Nucleotide")
     
-    transcribed = "".join(TRANSCRIPTION_MAPPING[nuc] for nuc in seq if nuc in ALLOWED_NUC)
+    transcribed = "".join(TRANSCRIPTION_MAPPING[nuc] for nuc in seq)
     #original approach I though was to use the dictionary, and do .str.replace(), but .str.replace() internally 
     #loops through the string and replaces each instance. Instead we use a generator here
     

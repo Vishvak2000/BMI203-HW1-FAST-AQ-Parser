@@ -67,7 +67,7 @@ def test_FastqParser():
     """
     good_fastq_records = list(FastqParser("tests/good.fq")) 
     assert good_fastq_records == [("seq0","TGTGGT","*540($"),
-                                 ("seq1","CCCCGG","'(<#/0")]
+                                 ("seq1","CCCCGG","'(<#/0")] 
     
     bad_fastq = FastqParser("tests/bad.fq")
     with pytest.raises(ValueError):
@@ -80,13 +80,11 @@ def test_FastqParser():
 
 
 
-                                                                                                                      
-
-    
-
 def test_FastqFormat():
     """
     Test to make sure fastq file is being read in. If this is a fasta file, the
     first line is None
     """
+    good_fasta_records = list(FastqParser("tests/good.fa")) # Convert into a list of tuples, and assert as opposed to for looping through records
+    assert good_fasta_records[0][0] == None
     
